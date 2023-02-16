@@ -6,7 +6,6 @@ class XKeyboard extends HTMLElement {
 		this.style.alignItems = 'center';
 
 		this.build();
-		console.log('XKeyboard');
 	}
 	
 	build() {
@@ -26,7 +25,6 @@ class XKeyboard extends HTMLElement {
 
 		this.appendChild(gridPanel);
 
-		console.log('XKeyboard:build');
 	}
 }
 
