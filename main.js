@@ -132,7 +132,7 @@ class XKeyboard extends HTMLElement {
 // })();
 
 // index.html
-{/* <html lang="en" class="dark-theme">
+/* <html lang="en" class="dark-theme">
 
 	<head>
 		<meta charset="utf-8">
@@ -147,4 +147,4 @@ class XKeyboard extends HTMLElement {
 		</body>
 
 		<script src="./main.js" type="module"></script>
-</html> */}
+</html> */
