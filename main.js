@@ -101,6 +101,7 @@ class XKeyboard extends HTMLElement {
 
 
 // Example
+// main.js
 // (function main() {
 // 	let output = document.getElementById('output');
 // 	output.style.fontSize = '2rem';
@@ -129,3 +130,21 @@ class XKeyboard extends HTMLElement {
 // 		}
 // 	})
 // })();
+
+// index.html
+{/* <html lang="en" class="dark-theme">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ZYX</title>
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		</head>
+
+		<body>
+			<x-keyboard id="keyboard-0" buttons="1 2 3 4 5 6 7 8 9 # 0 * α β γ" locked></x-keyboard>
+			<textarea id="output"></textarea>
+		</body>
+
+		<script src="./main.js" type="module"></script>
+</html> */}
