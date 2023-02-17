@@ -6,47 +6,56 @@ class XKeyboard extends HTMLElement {
 		this.style.alignItems = 'center';
 		this.keyboardPressEvent = new Event('x-keyboard-press', { bubbles: true, cancelable: false });
 		let styles = document.createElement('style');
+		// default styles
 		styles.textContent = `
-		x-keyboard[locked] {
-			color: #ff5500;
-		}
-
-		x-keyboard {
-			color: #00ffaa;
-		}
+		x-keyboard { color: #00ffaa; ; text-shadow: 0 0 1rem #00ffaa; }
+		x-keyboard[locked] { color: #ff0000; text-shadow: 0 0 1rem #ff2222; }
+		x-keyboard[rounded] p { border-radius: 50%; }
 
 		.keyboard-panel {
 			display: grid;
-			padding: 2rem;
+			padding: 1rem;
 			grid-template-columns: 1fr 1fr 1fr;
-			grid-column-gap: 0.25rem;
-			grid-row-gap: 0.25rem;
-			background: #000000;
-
+			grid-column-gap: 0.125rem;
+			grid-row-gap: 0.125rem;
 		}
 		
 		.keyboard-panel p {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			user-select: none;
-			font-size: 2rem;
-			padding: 2rem;
+			font-size: 200%;
+			padding: 1rem;
 			width: 5vw;
 			height: 5vw;
-			border-radius: ${this.hasAttribute('round') ? '50%' : '0%'  };
-			background: #000000;
+			box-shadow: 0 0 3px #222222 inset;
+			border-radius: 20%;
+			transition: all 0.25s ease-out;
 		}
 
-		.keyboard-panel p:hover {
-			background: #000000;
+		x-keyboard .keyboard-panel p:hover {
+			box-shadow: 0 0 6px #00ff00 inset;
 			transition: all 0.25s ease-in;
 		}
+		
+		x-keyboard[locked] .keyboard-panel p:hover {
+			box-shadow: 0 0 6px  #ff0000 inset;
+		}
 
-		.keyboard-panel p:active {
-			color: #ffffff;
-			text-shadow: 0 0 12px #112211;
+		x-keyboard .keyboard-panel p:active {
+			color: #aaffaa;
+			text-shadow: 0 0 0.25rem #00ff00;
+			transition: all 0.05s ease-in;
+		}
+		
+		x-keyboard[locked] .keyboard-panel p:active {
+			color: #ffaaaa;
+			text-shadow: 0 0 0.25rem #ff0000;
 			transition: all 0.05s ease-in;
 		}
 
-		@media screen and (max-width: 600px) {
+		@media screen and (max-width: 768px) {
 			.keyboard-panel {
 				grid-column-gap: 0.1rem;
 				grid-row-gap: 0.1rem;
@@ -91,15 +100,32 @@ class XKeyboard extends HTMLElement {
 })();
 
 
-// function example() {
-// 	// character pressed is in target.textContent
-// 	document.addEventListener('x-keyboard-press', (event) => console.log(event.target.textContent));
-// 	setInterval(() => {
-// 		let kbd0 = document.getElementById('keyboard-0');
-// 		if (kbd0.hasAttribute('locked')) {
-// 			kbd0.removeAttribute('locked');
-// 		} else {
-// 			kbd0.setAttribute('locked', true);
+// Example
+// (function main() {
+// 	let output = document.getElementById('output');
+// 	output.style.fontSize = '2rem';
+
+// 	let text = [];
+
+// 	document.addEventListener('x-keyboard-press', (event) => {
+// 		if (event.target.parentNode.parentNode.id === 'keyboard-0') {
+// 			text.push(event.target.textContent);
+// 			output.textContent = text;
 // 		}
-// 	}, 5000);
-// }
+
+// 		console.log(text.join(''));
+
+// 		if (text.join('') === '#2002*') {
+// 			console.log('UNLOCKED');
+// 			document.getElementById('keyboard-0').removeAttribute('locked');
+// 			text = [];
+// 			output.textContent = '';
+// 		}
+// 		if (text.join('') === '*1001#') {
+// 			console.log('LOCKED');
+// 			document.getElementById('keyboard-0').setAttribute('locked', true);
+// 			text = [];
+// 			output.textContent = '';
+// 		}
+// 	})
+// })();
