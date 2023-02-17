@@ -29,18 +29,16 @@ class XKeyboard extends HTMLElement {
 			padding: 1rem;
 			width: 5vw;
 			height: 5vw;
-			box-shadow: 0 0 3px #222222 inset;
+			background: #000000;
 			border-radius: 20%;
 			transition: all 0.25s ease-out;
 		}
 
 		x-keyboard .keyboard-panel p:hover {
-			box-shadow: 0 0 6px #00ff00 inset;
 			transition: all 0.25s ease-in;
 		}
 		
 		x-keyboard[locked] .keyboard-panel p:hover {
-			box-shadow: 0 0 6px  #ff0000 inset;
 		}
 
 		x-keyboard .keyboard-panel p:active {
